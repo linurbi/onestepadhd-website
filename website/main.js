@@ -5,7 +5,7 @@
    - Waitlist form submission via Formspree
 ============================================================= */
 
-const FORMSPREE_ID = 'YOUR_FORM_ID'; // Replace with your Formspree form ID
+const FORMSPREE_ID = 'xpqkveyr';
 
 let currentLang = 'he';
 
