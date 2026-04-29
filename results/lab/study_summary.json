@@ -1,0 +1,78 @@
+{
+  "mean_precision": 0.8962922010909626,
+  "mean_recall": 0.695,
+  "mean_f1": 0.7629281102965314,
+  "passed": true,
+  "participants": [
+    {
+      "participant_id": "P001",
+      "true_positives": 17,
+      "false_positives": 0,
+      "false_negatives": 3,
+      "true_negatives": 40
+    },
+    {
+      "participant_id": "P002",
+      "true_positives": 10,
+      "false_positives": 7,
+      "false_negatives": 10,
+      "true_negatives": 33
+    },
+    {
+      "participant_id": "P003",
+      "true_positives": 18,
+      "false_positives": 0,
+      "false_negatives": 2,
+      "true_negatives": 40
+    },
+    {
+      "participant_id": "P004",
+      "true_positives": 17,
+      "false_positives": 0,
+      "false_negatives": 3,
+      "true_negatives": 40
+    },
+    {
+      "participant_id": "P005",
+      "true_positives": 5,
+      "false_positives": 1,
+      "false_negatives": 15,
+      "true_negatives": 39
+    },
+    {
+      "participant_id": "P006",
+      "true_positives": 17,
+      "false_positives": 0,
+      "false_negatives": 3,
+      "true_negatives": 40
+    },
+    {
+      "participant_id": "P007",
+      "true_positives": 20,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 40
+    },
+    {
+      "participant_id": "P008",
+      "true_positives": 13,
+      "false_positives": 6,
+      "false_negatives": 7,
+      "true_negatives": 34
+    },
+    {
+      "participant_id": "P009",
+      "true_positives": 6,
+      "false_positives": 1,
+      "false_negatives": 14,
+      "true_negatives": 39
+    },
+    {
+      "participant_id": "P010",
+      "true_positives": 16,
+      "false_positives": 0,
+      "false_negatives": 4,
+      "true_negatives": 40
+    }
+  ]
+}
