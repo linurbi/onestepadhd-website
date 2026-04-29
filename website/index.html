@@ -8,568 +8,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800;900&family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      /* Exact logo dot spectrum: teal → blue → purple → magenta → orange */
-      --teal:    #00D4CC;
-      --blue:    #3B9EF8;
-      --purple:  #8B5CF6;
-      --magenta: #D946EF;
-      --orange:  #FF7043;
-
-      /* Logo text colors */
-      --logo-one:  #00D4CC;   /* "One" */
-      --logo-step: #2D2D4E;   /* "Step" */
-      --logo-adhd: linear-gradient(90deg, #D946EF, #FF7043); /* "ADHD" */
-
-      /* Gradients */
-      --grad-main:   linear-gradient(135deg, var(--teal) 0%, var(--blue) 30%, var(--purple) 65%, var(--magenta) 100%);
-      --grad-warm:   linear-gradient(135deg, var(--magenta) 0%, var(--orange) 100%);
-      --grad-adhd:   linear-gradient(90deg,  var(--magenta), var(--orange));
-      --grad-cool:   linear-gradient(135deg, var(--teal) 0%, var(--blue) 100%);
-      --grad-text:   linear-gradient(135deg, var(--teal), var(--purple), var(--magenta));
-      --grad-full:   linear-gradient(135deg, var(--teal) 0%, var(--blue) 25%, var(--purple) 55%, var(--magenta) 80%, var(--orange) 100%);
-
-      --dark:   #13131F;
-      --navy:   #1A1A35;
-      --gray:   #6B7280;
-      --light:  #F8F9FF;
-      --white:  #FFFFFF;
-      --radius: 18px;
-      --shadow: 0 8px 40px rgba(139,92,246,.22);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Heebo', 'Inter', sans-serif;
-      background: var(--white);
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── UTILS ────────────────────────────── */
-    .grad-text {
-      background: var(--grad-text);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .adhd-text {
-      background: var(--grad-adhd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .full-text {
-      background: var(--grad-full);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* ── NAV ──────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: rgba(255,255,255,.97);
-      backdrop-filter: blur(16px);
-      border-bottom: 2px solid rgba(139,92,246,.1);
-      z-index: 100;
-      padding: 0 6%;
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 20px rgba(139,92,246,.08);
-    }
-    .logo-wrap img { height: 52px; display: block; }
-    .lang-toggle { display: flex; gap: 8px; }
-    .lang-btn {
-      padding: 6px 18px;
-      border-radius: 20px;
-      border: 2px solid #E5E7EB;
-      background: transparent;
-      font-size: .85rem;
-      cursor: pointer;
-      font-family: inherit;
-      font-weight: 600;
-      transition: all .2s;
-      color: var(--gray);
-    }
-    .lang-btn.active {
-      background: var(--grad-main);
-      border-color: transparent;
-      color: #fff;
-    }
-
-    /* ── HERO ─────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 6% 80px;
-      position: relative;
-      overflow: hidden;
-      background: #fafafe;
-    }
-
-    /* Colourful blobs */
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,201,200,.15) 0%, transparent 65%);
-      top: -200px; right: -200px;
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,92,245,.12) 0%, transparent 65%);
-      bottom: -150px; left: -150px;
-      pointer-events: none;
-    }
-    .blob-orange {
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,112,67,.1) 0%, transparent 70%);
-      bottom: 50px; right: 10%;
-      pointer-events: none;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(135deg, rgba(0,201,200,.12), rgba(124,92,252,.12));
-      border: 1.5px solid rgba(124,92,252,.3);
-      border-radius: 30px;
-      padding: 8px 22px;
-      font-size: .88rem;
-      font-weight: 700;
-      color: var(--purple);
-      margin-bottom: 36px;
-      position: relative; z-index: 1;
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-      font-weight: 900;
-      line-height: 1.18;
-      max-width: 900px;
-      margin-bottom: 24px;
-      position: relative; z-index: 1;
-    }
-
-    .subtitle {
-      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-      color: var(--gray);
-      max-width: 620px;
-      margin-bottom: 48px;
-      font-weight: 400;
-      position: relative; z-index: 1;
-    }
-
-    /* ── FORM ─────────────────────────────── */
-    .waitlist-form {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-      max-width: 540px;
-      margin-bottom: 16px;
-      position: relative; z-index: 1;
-    }
-    .waitlist-form input {
-      flex: 1;
-      min-width: 230px;
-      padding: 16px 22px;
-      border: 2px solid #E5E7EB;
-      border-radius: var(--radius);
-      font-size: 1rem;
-      font-family: inherit;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-      background: #fff;
-      text-align: right;
-      direction: rtl;
-    }
-    .waitlist-form input:focus {
-      border-color: var(--purple);
-      box-shadow: 0 0 0 4px rgba(124,92,252,.1);
-    }
-    .btn-primary {
-      padding: 16px 32px;
-      background: var(--grad-main);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      font-size: 1rem;
-      font-weight: 800;
-      cursor: pointer;
-      font-family: inherit;
-      transition: transform .2s, box-shadow .2s;
-      white-space: nowrap;
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(124,92,252,.4);
-    }
-    .form-note { font-size: .82rem; color: #9CA3AF; position: relative; z-index: 1; }
-
-    .success-msg {
-      display: none;
-      background: linear-gradient(135deg, rgba(0,201,200,.1), rgba(124,92,252,.1));
-      border: 1.5px solid rgba(124,92,252,.3);
-      color: var(--purple);
-      padding: 14px 28px;
-      border-radius: var(--radius);
-      font-weight: 700;
-      margin-top: 12px;
-      font-size: .95rem;
-      max-width: 480px;
-      position: relative; z-index: 1;
-    }
-
-    /* Stats */
-    .hero-stats {
-      display: flex;
-      gap: 52px;
-      margin-top: 64px;
-      flex-wrap: wrap;
-      justify-content: center;
-      position: relative; z-index: 1;
-    }
-    .stat { text-align: center; }
-    .stat-num {
-      font-size: 2.4rem;
-      font-weight: 900;
-      background: var(--grad-full);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-label { font-size: .85rem; color: var(--gray); margin-top: 4px; }
-    .stat-divider {
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, rgba(124,92,252,.3), transparent);
-    }
-
-    /* ── SECTION BASE ─────────────────────── */
-    section { padding: 96px 6%; }
-    .section-header { max-width: 640px; margin-bottom: 56px; }
-    .section-header.center { text-align: center; margin: 0 auto 56px; }
-    .section-label {
-      display: inline-block;
-      font-size: .78rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      background: var(--grad-full);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 12px;
-    }
-    h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
-      font-weight: 900;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    .section-sub { color: var(--gray); font-size: 1.05rem; line-height: 1.7; }
-
-    /* ── MANIFESTO ────────────────────────── */
-    .manifesto {
-      background: var(--navy);
-      position: relative;
-      overflow: hidden;
-    }
-    .manifesto::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg,
-        rgba(0,201,200,.08) 0%,
-        rgba(124,92,252,.12) 50%,
-        rgba(255,112,67,.06) 100%);
-      pointer-events: none;
-    }
-    .manifesto h2 { color: #fff; position: relative; z-index: 1; }
-    .manifesto .section-header { position: relative; z-index: 1; }
-    .manifesto-body {
-      max-width: 760px;
-      margin: 0 auto;
-      position: relative; z-index: 1;
-    }
-    .manifesto-line {
-      font-size: 1.15rem;
-      line-height: 1.9;
-      color: #CBD5E1;
-      margin-bottom: 20px;
-    }
-    .manifesto-line strong { color: #fff; font-weight: 700; }
-    .manifesto-big {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      font-weight: 900;
-      background: var(--grad-full);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-      margin-top: 32px;
-      line-height: 1.4;
-    }
-
-    /* ── PROBLEM ──────────────────────────── */
-    .problem { background: var(--light); }
-    .problem-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 22px;
-    }
-    .problem-card {
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      box-shadow: 0 2px 20px rgba(0,0,0,.06);
-      border-top: 4px solid transparent;
-      transition: transform .25s, box-shadow .25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .problem-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-    }
-    .problem-card:nth-child(1)::before { background: var(--grad-cool); }
-    .problem-card:nth-child(2)::before { background: var(--grad-main); }
-    .problem-card:nth-child(3)::before { background: var(--grad-adhd); }
-    .problem-card:nth-child(4)::before { background: var(--grad-warm); }
-    .problem-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-    .problem-card .icon { font-size: 2.4rem; margin-bottom: 16px; }
-    .problem-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
-    .problem-card p { font-size: .92rem; color: var(--gray); line-height: 1.65; }
-
-    /* ── HOW IT WORKS ─────────────────────── */
-    .how { background: #fff; }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-    }
-    .step {
-      text-align: center;
-      padding: 40px 26px;
-      border-radius: var(--radius);
-      position: relative;
-      overflow: hidden;
-      background: #fff;
-      border: 2px solid rgba(124,92,252,.1);
-      transition: transform .25s, box-shadow .25s, border-color .25s;
-    }
-    .step:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-      border-color: rgba(124,92,252,.3);
-    }
-    .step::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-    }
-    .step:nth-child(1)::after { background: var(--grad-cool); }
-    .step:nth-child(2)::after { background: var(--grad-main); }
-    .step:nth-child(3)::after { background: var(--grad-adhd); }
-    .step:nth-child(4)::after { background: var(--grad-warm); }
-
-    .step-num {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: var(--grad-full);
-      color: #fff;
-      font-weight: 900;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-      box-shadow: 0 4px 16px rgba(139,92,246,.4);
-    }
-    .step-icon { font-size: 2.4rem; margin-bottom: 12px; }
-    .step h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
-    .step p { font-size: .9rem; color: var(--gray); line-height: 1.65; }
-
-    /* ── FOUNDERS ─────────────────────────── */
-    .founders {
-      background: var(--navy);
-      position: relative;
-      overflow: hidden;
-    }
-    .founders::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg,
-        rgba(0,201,200,.06) 0%,
-        rgba(200,92,245,.08) 100%);
-      pointer-events: none;
-    }
-    .founders h2 { color: #fff; }
-    .founders .section-header { position: relative; z-index: 1; }
-    .founders-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 28px;
-      position: relative; z-index: 1;
-    }
-    .founder-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 22px;
-      padding: 38px 40px;
-      backdrop-filter: blur(8px);
-      transition: transform .25s, background .25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .founder-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--grad-main);
-    }
-    .founder-card:last-child::before {
-      background: var(--grad-warm);
-    }
-    .founder-card:hover { transform: translateY(-4px); background: rgba(255,255,255,.09); }
-    .founder-quote {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: #CBD5E1;
-      font-style: italic;
-      margin-bottom: 24px;
-    }
-    .founder-name {
-      font-weight: 800;
-      font-size: 1.05rem;
-      background: var(--grad-full);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .founder-title { font-size: .88rem; color: #64748B; margin-top: 3px; }
-
-    /* ── CTA ──────────────────────────────── */
-    .cta {
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-    }
-    .cta-bg {
-      position: absolute; inset: 0;
-      background: var(--grad-full);
-      z-index: 0;
-    }
-    .cta-bg::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,.08) 0%, transparent 70%);
-    }
-    .cta > * { position: relative; z-index: 1; }
-    .cta h2 { color: #fff; }
-    .cta .section-sub { color: rgba(255,255,255,.8); max-width: 500px; margin: 0 auto 44px; }
-    .cta .waitlist-form { margin: 0 auto 14px; }
-    .cta .waitlist-form input {
-      border-color: rgba(255,255,255,.9);
-      background: rgba(255,255,255,.95);
-      color: var(--dark);
-    }
-    .cta .waitlist-form input::placeholder { color: #9CA3AF; }
-    .cta .waitlist-form input:focus {
-      border-color: #fff;
-      box-shadow: 0 0 0 4px rgba(255,255,255,.3);
-      background: #fff;
-    }
-    .cta .btn-primary {
-      background: var(--navy);
-      color: #fff;
-      border: 2px solid rgba(255,255,255,.2);
-    }
-    .cta .btn-primary:hover {
-      background: #fff;
-      color: var(--purple);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-    .cta .form-note { color: rgba(255,255,255,.55); }
-
-    /* ── FOOTER ───────────────────────────── */
-    footer {
-      background: var(--dark);
-      color: #4B5563;
-      text-align: center;
-      padding: 40px 6%;
-      font-size: .88rem;
-      border-top: 1px solid rgba(255,255,255,.05);
-    }
-    footer a { color: var(--teal); text-decoration: none; }
-    .footer-logo {
-      height: 30px;
-      margin: 0 auto 18px;
-      display: block;
-      filter: brightness(0) invert(1);
-      opacity: .5;
-    }
-    .footer-divider {
-      width: 40px; height: 2px;
-      background: var(--grad-main);
-      margin: 14px auto;
-      border-radius: 2px;
-    }
-
-    /* ── LTR (English) ────────────────────── */
-    body.en { direction: ltr; font-family: 'Inter', 'Heebo', sans-serif; }
-    body.en .waitlist-form input { text-align: left; direction: ltr; }
-
-    /* ── RESPONSIVE ───────────────────────── */
-    @media (max-width: 640px) {
-      .waitlist-form { flex-direction: column; }
-      .waitlist-form input, .btn-primary { width: 100%; min-width: unset; }
-      .founder-card { padding: 28px 22px; }
-      .hero-stats { gap: 24px; }
-      .stat-divider { display: none; }
-      section { padding: 72px 5%; }
-      h1 { font-size: 2rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── NAVIGATION ──────────────────────────────────────────── -->
 <nav>
   <a class="logo-wrap" href="#"><img src="logo.png" alt="OneStep ADHD" /></a>
   <div class="lang-toggle">
     <button class="lang-btn active" id="btn-he" onclick="setLang('he')">עברית</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ── HERO ────────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="blob-orange"></div>
+  <div class="blob-orange" aria-hidden="true"></div>
 
   <div class="badge">
     🚀 <span class="t" data-he="בקרוב — הצטרפו ראשונים" data-en="Coming Soon — Be First"></span>
@@ -577,8 +31,8 @@
 
   <h1>
     <span class="t"
-      data-he='אנחנו לא כאן כדי <span class="full-text">לתקן</span> את הילד שלך.<br>אנחנו כאן בשביל <span class="adhd-text">העכשיו</span>.'
-      data-en='We&rsquo;re not here to <span class="full-text">fix</span> your child.<br>We&rsquo;re here for the <span class="adhd-text">now</span>.'>
+      data-he='אנחנו לא כאן כדי <span class="full-text">לתקן</span> את הילד שלך.<br>אנחנו בונים מערכת שהוא יכול <span class="adhd-text">לסמוך עליה</span>.'
+      data-en='We&rsquo;re not here to <span class="full-text">fix</span> your child.<br>We&rsquo;re building a system they can <span class="adhd-text">rely on</span>.'>
     </span>
   </h1>
 
@@ -586,7 +40,7 @@
      data-he="הפיתוח הראשון בעולם שמרגיש את הילד מבלי שיצטרך להגיד מילה — ומחזיר אותו לזרימה תוך שניות."
      data-en="The world's first wearable that senses your child's cognitive state without a word — and brings them back to flow in seconds."></p>
 
-  <form class="waitlist-form" onsubmit="submitForm(event,'hero-success','email-hero')">
+  <form class="waitlist-form" onsubmit="submitForm(event, 'hero-success', 'email-hero')">
     <input type="email" id="email-hero" required class="t"
            data-he-placeholder="האימייל שלך"
            data-en-placeholder="Your email address"
@@ -595,9 +49,11 @@
             data-he="הצטרפו לרשימת ההמתנה"
             data-en="Join the Waitlist"></button>
   </form>
-  <div class="success-msg t" id="hero-success" style="margin:0 auto;"
+
+  <div class="success-msg t" id="hero-success" style="margin: 0 auto;"
        data-he="תודה! נעדכן אותך ראשון/ה כשנשיק 🎉"
        data-en="You're on the list! 🎉"></div>
+
   <p class="form-note t"
      data-he="ללא ספאם. רק עדכון אחד כשנשיק."
      data-en="No spam. One email when we launch."></p>
@@ -607,12 +63,12 @@
       <div class="stat-num">1:11</div>
       <div class="stat-label t" data-he="ילדים מאובחנים ADHD" data-en="children diagnosed with ADHD"></div>
     </div>
-    <div class="stat-divider"></div>
+    <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat">
       <div class="stat-num">&lt;10s</div>
       <div class="stat-label t" data-he="לחזרה לזרימה" data-en="back to flow"></div>
     </div>
-    <div class="stat-divider"></div>
+    <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat">
       <div class="stat-num">0</div>
       <div class="stat-label t" data-he="מאמץ נוסף מהילד" data-en="extra effort from your child"></div>
@@ -620,7 +76,7 @@
   </div>
 </section>
 
-<!-- MANIFESTO -->
+<!-- ── MANIFESTO ───────────────────────────────────────────── -->
 <section class="manifesto">
   <div class="section-header center">
     <div class="section-label t" data-he="המניפסט שלנו" data-en="Our Manifesto"></div>
@@ -631,15 +87,15 @@
        data-he='<strong>אנחנו יודעים שאתה חכם, יצירתי ומלא פוטנציאל.</strong> אנחנו גם יודעים שיש רגעים שבהם המוח פשוט "ננעל" — והפער בין מה שאתה רוצה לעשות לבין מה שיוצא החוצה הוא כואב.'
        data-en='<strong>We know you are smart, creative, and full of potential.</strong> We also know there are moments when the brain simply locks up — and the gap between what you want to do and what comes out is painful.'></p>
     <p class="manifesto-line t"
-       data-he='אנחנו לא נשאל "איך זה מרגיש". <strong>אנחנו כאן בשביל העכשיו.</strong> OneStep הוא "גלגלי העזר" של המוח שלך — מרגיש אותך מבלי שתצטרך להגיד מילה.'
-       data-en='We won&rsquo;t ask "how does that feel." <strong>We are here for the now.</strong> OneStep is the training wheels for your brain — sensing you without a single word.'></p>
+       data-he='אנחנו לא נשאל "איך זה מרגיש". <strong>אנחנו בונים מערכת שאפשר לסמוך עליה</strong> — שמרגישה אותך מבלי שתצטרך להגיד מילה, ונותנת לך את הכלים לצעד הבא.'
+       data-en='We won&rsquo;t ask "how does that feel." <strong>We are building a system you can rely on</strong> — one that senses you without a word and gives you the tools for the next step.'></p>
     <span class="manifesto-big t"
        data-he="כי לפעמים, כל מה שצריך זה רק את הצעד הבא."
        data-en="Because sometimes, all you need is just the next step."></span>
   </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- ── PROBLEM ──────────────────────────────────────────────── -->
 <section class="problem">
   <div class="section-header center">
     <div class="section-label t" data-he="הבעיה" data-en="The Problem"></div>
@@ -662,17 +118,21 @@
     <div class="problem-card">
       <div class="icon">💔</div>
       <h3 class="t" data-he='"עצלן" ו"לא ממומש"' data-en='"Lazy" and "unrealized"'></h3>
-      <p class="t" data-he='תווית שנדבקת — במקום לזהות שהמוח פשוט צריך מערכת הפעלה קצת אחרת.' data-en='A label that sticks — instead of recognizing the brain just needs a different operating system.'></p>
+      <p class="t"
+         data-he="תווית שנדבקת — במקום לזהות שהמוח פשוט צריך מערכת הפעלה קצת אחרת."
+         data-en="A label that sticks — instead of recognizing the brain just needs a different operating system."></p>
     </div>
     <div class="problem-card">
       <div class="icon">🙋</div>
       <h3 class="t" data-he="תלות מתמדת במבוגר" data-en="Constant adult dependence"></h3>
-      <p class="t" data-he="כל תקיעה קטנה מצריכה הורה או מורה שיוציאו אותם." data-en="Every small stuck moment needs a parent or teacher to pull them out."></p>
+      <p class="t"
+         data-he="כל תקיעה קטנה מצריכה הורה או מורה שיוציאו אותם."
+         data-en="Every small stuck moment needs a parent or teacher to pull them out."></p>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
 <section class="how">
   <div class="section-header center">
     <div class="section-label t" data-he="איך זה עובד" data-en="How It Works"></div>
@@ -683,32 +143,32 @@
   </div>
   <div class="steps">
     <div class="step">
-      <div class="step-icon">📡</div>
-      <div class="step-num">1</div>
+      <div class="step-icon" aria-hidden="true">📡</div>
+      <div class="step-num" aria-label="Step 1">1</div>
       <h3 class="t" data-he="זיהוי" data-en="Detect"></h3>
       <p class="t"
          data-he="הצמיד קורא דופק, מוליכות עור ותנועה — ומזהה דפוס תקיעה לפני שהתסכול משתלט."
          data-en="The wristband reads heart rate, skin conductance and movement — detecting stuckness before frustration takes over."></p>
     </div>
     <div class="step">
-      <div class="step-icon">⚡</div>
-      <div class="step-num">2</div>
+      <div class="step-icon" aria-hidden="true">⚡</div>
+      <div class="step-num" aria-label="Step 2">2</div>
       <h3 class="t" data-he="התערבות" data-en="Interrupt"></h3>
       <p class="t"
          data-he="רטט עדין בפרק כף היד. לא מבייש, לא מפריע לאחרים, לא דורש מילה."
          data-en="A gentle wrist vibration. Discreet, private, requires no words."></p>
     </div>
     <div class="step">
-      <div class="step-icon">🎯</div>
-      <div class="step-num">3</div>
+      <div class="step-icon" aria-hidden="true">🎯</div>
+      <div class="step-num" aria-label="Step 3">3</div>
       <h3 class="t" data-he="מיקרו-פעולה" data-en="Micro-action"></h3>
       <p class="t"
          data-he='הנחיה אחת פשוטה מותאמת לסוג התקיעה: "הזז אצבע אחת" או "שאיפה אחת, לאט".'
          data-en='One cue matched to the stuckness type: "move one finger" or "one slow breath."'></p>
     </div>
     <div class="step">
-      <div class="step-icon">🌊</div>
-      <div class="step-num">4</div>
+      <div class="step-icon" aria-hidden="true">🌊</div>
+      <div class="step-num" aria-label="Step 4">4</div>
       <h3 class="t" data-he="חזרה לזרימה" data-en="Back to flow"></h3>
       <p class="t"
          data-he="הילד ממשיך בעצמו. בלי הורה. בלי מורה. בלי שמישהו ידע."
@@ -717,7 +177,7 @@
   </div>
 </section>
 
-<!-- FOUNDERS -->
+<!-- ── FOUNDERS ─────────────────────────────────────────────── -->
 <section class="founders">
   <div class="section-header center">
     <div class="section-label t" data-he="המייסדות" data-en="The Founders"></div>
@@ -741,18 +201,20 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ── CTA ──────────────────────────────────────────────────── -->
 <section class="cta">
-  <div class="cta-bg"></div>
-  <div class="section-header center" style="margin-bottom:36px;">
-    <h2 class="t" style="color:#fff;"
+  <div class="cta-bg" aria-hidden="true"></div>
+
+  <div class="section-header center" style="margin-bottom: 36px;">
+    <h2 class="t"
         data-he="אנחנו לא מבקשים מהילד להתאמץ יותר."
         data-en="We don't ask your child to try harder."></h2>
     <p class="section-sub t"
        data-he="אנחנו נותנים לו מערכת שעובדת גם כשהוא לא מצליח. הצטרפו לרשימת ההמתנה."
        data-en="We give them a system that works even when they can't. Join the waitlist."></p>
   </div>
-  <form class="waitlist-form" onsubmit="submitForm(event,'cta-success','email-cta')">
+
+  <form class="waitlist-form" onsubmit="submitForm(event, 'cta-success', 'email-cta')">
     <input type="email" id="email-cta" required class="t"
            data-he-placeholder="האימייל שלך"
            data-en-placeholder="Your email address"
@@ -761,60 +223,29 @@
             data-he="אני רוצה גישה ראשונה"
             data-en="I want first access"></button>
   </form>
-  <div class="success-msg t" id="cta-success" style="margin:0 auto;"
+
+  <div class="success-msg t" id="cta-success" style="margin: 0 auto;"
        data-he="נרשמת! נחזור אליך בקרוב 🎉"
        data-en="You're on the list! 🎉"></div>
+
   <p class="form-note t"
      data-he="ללא ספאם. רק עדכון אחד כשנשיק."
      data-en="No spam. One email when we launch."></p>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ───────────────────────────────────────────────── -->
 <footer>
   <img src="logo.png" alt="OneStep ADHD" class="footer-logo" />
-  <div class="footer-divider"></div>
-  <p>© 2026 OneStep ADHD &nbsp;·&nbsp;
-     <a href="mailto:hello@onestepadhd.com">hello@onestepadhd.com</a>
+  <div class="footer-divider" aria-hidden="true"></div>
+  <p>
+    &copy; 2026 OneStep ADHD &nbsp;&middot;&nbsp;
+    <a href="mailto:hello@onestepadhd.com">hello@onestepadhd.com</a>
   </p>
-  <p style="margin-top:10px; font-size:.82rem;">
+  <p style="margin-top: 10px; font-size: 0.82rem;">
     Linur Serero Dar &amp; Lilyan Pinchas
   </p>
 </footer>
 
-<script>
-  let currentLang = 'he';
-
-  function setLang(lang) {
-    currentLang = lang;
-    document.documentElement.setAttribute('lang', lang);
-    document.documentElement.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
-    document.body.classList.toggle('en', lang === 'en');
-    document.getElementById('btn-he').classList.toggle('active', lang === 'he');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.querySelectorAll('.t').forEach(el => {
-      const txt = el.getAttribute('data-' + lang);
-      if (txt !== null) el.innerHTML = txt;
-      const ph = el.getAttribute('data-' + lang + '-placeholder');
-      if (ph) el.placeholder = ph;
-    });
-  }
-
-  function submitForm(e, successId, emailId) {
-    e.preventDefault();
-    const FORMSPREE_ID = 'YOUR_FORM_ID';
-    const email = document.getElementById(emailId).value;
-    fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email, lang: currentLang })
-    }).catch(() => {});
-    const msg = document.getElementById(successId);
-    msg.innerHTML = msg.getAttribute('data-' + currentLang);
-    msg.style.display = 'block';
-    document.getElementById(emailId).value = '';
-  }
-
-  setLang('he');
-</script>
+<script src="main.js"></script>
 </body>
 </html>
