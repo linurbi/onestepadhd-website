@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OneStep ADHD — הדחיפה הקטנה שמשנה הכל</title>
-  <meta name="description" content="הפיתוח הראשון בעולם שמרגיש את הילד שלך מבלי שיצטרך להגיד מילה." />
+  <meta name="description" content="מערכת ביומטרית חכמה לילדי ADHD — מרגישה את הילד מבלי שיצטרך להגיד מילה." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800;900&family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<!-- ── NAVIGATION ──────────────────────────────────────────── -->
+<!-- ── NAV ─────────────────────────────────────────────────── -->
 <nav>
   <a class="logo-wrap" href="#"><img src="logo.png" alt="OneStep ADHD" /></a>
   <div class="lang-toggle">
@@ -23,72 +23,130 @@
 
 <!-- ── HERO ────────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="blob-orange" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      <span class="t" data-he="בקרוב — הצטרפו ראשונים" data-en="Coming Soon — Be First"></span>
+    </div>
 
-  <div class="badge">
-    🚀 <span class="t" data-he="בקרוב — הצטרפו ראשונים" data-en="Coming Soon — Be First"></span>
+    <h1 class="t"
+      data-he='אנחנו לא כאן כדי לתקן את הילד שלך.<br><span class="grad-text">אנחנו בונים מערכת שהוא יכול לסמוך עליה.</span>'
+      data-en='We&rsquo;re not here to fix your child.<br><span class="grad-text">We&rsquo;re building a system they can rely on.</span>'>
+    </h1>
+
+    <p class="hero-sub t"
+       data-he="צמיד ביומטרי חכם שמרגיש תקיעה קוגניטיבית — ומחזיר את הילד לזרימה תוך שניות, בלי מילה."
+       data-en="A smart biometric wristband that senses cognitive stuckness — and brings your child back to flow in seconds, without a word."></p>
+
+    <form class="waitlist-form" onsubmit="submitForm(event,'hero-success','email-hero')" style="justify-content:flex-start; margin:0;">
+      <input type="email" id="email-hero" required class="t"
+             data-he-placeholder="האימייל שלך"
+             data-en-placeholder="Your email address"
+             placeholder="האימייל שלך" />
+      <button type="submit" class="btn-primary t"
+              data-he="הצטרפו לרשימת ההמתנה"
+              data-en="Join the Waitlist"></button>
+    </form>
+    <div class="success-msg t" id="hero-success"
+         data-he="תודה! נעדכן אותך ראשון/ה 🎉"
+         data-en="You're on the list! 🎉"></div>
+    <p class="form-note t"
+       data-he="ללא ספאם. רק עדכון אחד כשנשיק."
+       data-en="No spam. One update when we launch."></p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">1:11</div>
+        <div class="stat-label t" data-he="ילדים עם ADHD" data-en="children with ADHD"></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&lt;10s</div>
+        <div class="stat-label t" data-he="לחזרה לזרימה" data-en="back to flow"></div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label t" data-he="מאמץ נוסף מהילד" data-en="extra effort required"></div>
+      </div>
+    </div>
   </div>
 
-  <h1>
-    <span class="t"
-      data-he='אנחנו לא כאן כדי <span class="full-text">לתקן</span> את הילד שלך.<br>אנחנו בונים מערכת שהוא יכול <span class="adhd-text">לסמוך עליה</span>.'
-      data-en='We&rsquo;re not here to <span class="full-text">fix</span> your child.<br>We&rsquo;re building a system they can <span class="adhd-text">rely on</span>.'>
-    </span>
-  </h1>
+  <div class="hero-image">
+    <img src="hero-child.png" alt="ילדה מחייכת עם צמיד OneStep" />
+  </div>
+</section>
 
-  <p class="subtitle t"
-     data-he="הפיתוח הראשון בעולם שמרגיש את הילד מבלי שיצטרך להגיד מילה — ומחזיר אותו לזרימה תוך שניות."
-     data-en="The world's first wearable that senses your child's cognitive state without a word — and brings them back to flow in seconds."></p>
+<!-- ── TRUST BAR ────────────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="dot"></div>
+    <span class="t" data-he="מבוסס מחקר ביומטרי" data-en="Biometric research-based"></span>
+  </div>
+  <div class="trust-item">
+    <div class="dot"></div>
+    <span class="t" data-he="פרטיות מלאה לילד" data-en="Full child privacy"></span>
+  </div>
+  <div class="trust-item">
+    <div class="dot"></div>
+    <span class="t" data-he="ללא סטיגמה, ללא בושה" data-en="No stigma, no shame"></span>
+  </div>
+  <div class="trust-item">
+    <div class="dot"></div>
+    <span class="t" data-he="עובד בכיתה ובבית" data-en="Works at school & home"></span>
+  </div>
+</div>
 
-  <form class="waitlist-form" onsubmit="submitForm(event, 'hero-success', 'email-hero')">
-    <input type="email" id="email-hero" required class="t"
-           data-he-placeholder="האימייל שלך"
-           data-en-placeholder="Your email address"
-           placeholder="האימייל שלך" />
-    <button type="submit" class="btn-primary t"
-            data-he="הצטרפו לרשימת ההמתנה"
-            data-en="Join the Waitlist"></button>
-  </form>
-
-  <div class="success-msg t" id="hero-success" style="margin: 0 auto;"
-       data-he="תודה! נעדכן אותך ראשון/ה כשנשיק 🎉"
-       data-en="You're on the list! 🎉"></div>
-
-  <p class="form-note t"
-     data-he="ללא ספאם. רק עדכון אחד כשנשיק."
-     data-en="No spam. One email when we launch."></p>
-
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">1:11</div>
-      <div class="stat-label t" data-he="ילדים מאובחנים ADHD" data-en="children diagnosed with ADHD"></div>
+<!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
+<section class="how">
+  <div class="how-header fade-up">
+    <div class="section-label t" data-he="איך זה עובד" data-en="How It Works"></div>
+    <h2 class="t" data-he="ארבעה צעדים. שניות." data-en="Four steps. Seconds."></h2>
+    <p class="section-sub t" style="margin-top:14px;"
+       data-he="המערכת פועלת בשקט, בלי להפריע לאיש."
+       data-en="The system works quietly, without disturbing anyone."></p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-line"></div>
+      <div class="step-icon">📡</div>
+      <div class="step-num t" data-he="שלב 01" data-en="Step 01"></div>
+      <h3 class="t" data-he="זיהוי" data-en="Detect"></h3>
+      <p class="t" data-he="הצמיד קורא דופק, מוליכות עור ותנועה — ומזהה תקיעה לפני שהתסכול משתלט." data-en="The wristband reads heart rate, skin conductance and movement — detecting stuckness before frustration takes over."></p>
     </div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat">
-      <div class="stat-num">&lt;10s</div>
-      <div class="stat-label t" data-he="לחזרה לזרימה" data-en="back to flow"></div>
+    <div class="step fade-up">
+      <div class="step-line"></div>
+      <div class="step-icon">⚡</div>
+      <div class="step-num t" data-he="שלב 02" data-en="Step 02"></div>
+      <h3 class="t" data-he="התערבות" data-en="Interrupt"></h3>
+      <p class="t" data-he="רטט עדין בפרק כף היד. לא מבייש, לא מפריע לאחרים." data-en="A gentle wrist vibration. Discreet, private, no words needed."></p>
     </div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat">
-      <div class="stat-num">0</div>
-      <div class="stat-label t" data-he="מאמץ נוסף מהילד" data-en="extra effort from your child"></div>
+    <div class="step fade-up">
+      <div class="step-line"></div>
+      <div class="step-icon">🎯</div>
+      <div class="step-num t" data-he="שלב 03" data-en="Step 03"></div>
+      <h3 class="t" data-he="מיקרו-פעולה" data-en="Micro-action"></h3>
+      <p class="t" data-he='הנחיה אחת: "הזז אצבע אחת" או "שאיפה אחת, לאט".' data-en='"Move one finger" or "one slow breath." One simple cue.'></p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-line"></div>
+      <div class="step-icon">🌊</div>
+      <div class="step-num t" data-he="שלב 04" data-en="Step 04"></div>
+      <h3 class="t" data-he="חזרה לזרימה" data-en="Back to flow"></h3>
+      <p class="t" data-he="הילד ממשיך בעצמו. בלי הורה. בלי מורה. בלי שמישהו ידע." data-en="The child continues alone. No parent, no teacher, no one needs to know."></p>
     </div>
   </div>
 </section>
 
 <!-- ── MANIFESTO ───────────────────────────────────────────── -->
 <section class="manifesto">
-  <div class="section-header center">
+  <div class="manifesto-inner fade-up">
     <div class="section-label t" data-he="המניפסט שלנו" data-en="Our Manifesto"></div>
     <h2 class="t" data-he="המערכת שסומכת עליך" data-en="The System That Trusts You"></h2>
-  </div>
-  <div class="manifesto-body">
     <p class="manifesto-line t"
-       data-he='<strong>אנחנו יודעים שאתה חכם, יצירתי ומלא פוטנציאל.</strong> אנחנו גם יודעים שיש רגעים שבהם המוח פשוט "ננעל" — והפער בין מה שאתה רוצה לעשות לבין מה שיוצא החוצה הוא כואב.'
-       data-en='<strong>We know you are smart, creative, and full of potential.</strong> We also know there are moments when the brain simply locks up — and the gap between what you want to do and what comes out is painful.'></p>
+       data-he='<strong>אנחנו יודעים שאתה חכם, יצירתי ומלא פוטנציאל.</strong> יש רגעים שבהם המוח פשוט "ננעל" — והפער בין מה שאתה רוצה לעשות לבין מה שיוצא הוא כואב.'
+       data-en='<strong>We know you are smart, creative, and full of potential.</strong> There are moments when the brain simply locks up — and the gap between what you want to do and what comes out is painful.'></p>
     <p class="manifesto-line t"
-       data-he='אנחנו לא נשאל "איך זה מרגיש". <strong>אנחנו בונים מערכת שאפשר לסמוך עליה</strong> — שמרגישה אותך מבלי שתצטרך להגיד מילה, ונותנת לך את הכלים לצעד הבא.'
-       data-en='We won&rsquo;t ask "how does that feel." <strong>We are building a system you can rely on</strong> — one that senses you without a word and gives you the tools for the next step.'></p>
+       data-he='אנחנו לא נשאל "איך זה מרגיש". <strong>אנחנו בונים מערכת שאפשר לסמוך עליה</strong> — שמרגישה אותך מבלי שתצטרך להגיד מילה.'
+       data-en='We won&rsquo;t ask "how does that feel." <strong>We are building a system you can rely on</strong> — one that senses you without a single word.'></p>
     <span class="manifesto-big t"
        data-he="כי לפעמים, כל מה שצריך זה רק את הצעד הבא."
        data-en="Because sometimes, all you need is just the next step."></span>
@@ -96,106 +154,57 @@
 </section>
 
 <!-- ── PROBLEM ──────────────────────────────────────────────── -->
-<section class="problem">
-  <div class="section-header center">
+<section>
+  <div class="problem-header fade-up">
     <div class="section-label t" data-he="הבעיה" data-en="The Problem"></div>
     <h2 class="t" data-he="מה שהורים רואים כל יום" data-en="What Parents See Every Day"></h2>
-    <p class="section-sub t"
-       data-he="ילדים עם ADHD לא נתקעים מעצלות — המוח שלהם פשוט דורש כלים שעדיין אין להם."
-       data-en="Children with ADHD don't get stuck from laziness — their brain simply needs tools it doesn't yet have."></p>
+    <p class="section-sub t" style="margin-top:14px;"
+       data-he="ילדים עם ADHD לא נתקעים מעצלות — המוח שלהם דורש כלים שעדיין אין להם."
+       data-en="Children with ADHD don't get stuck from laziness — their brain needs tools it doesn't yet have."></p>
   </div>
   <div class="problem-cards">
-    <div class="problem-card">
+    <div class="problem-card fade-up">
       <div class="icon">😶</div>
       <h3 class="t" data-he="קיפאון באמצע משימה" data-en="Freeze mid-task"></h3>
       <p class="t" data-he="יודעים בדיוק מה לעשות — ולא מצליחים להתחיל." data-en="Know exactly what to do — but cannot start."></p>
     </div>
-    <div class="problem-card">
+    <div class="problem-card fade-up">
       <div class="icon">🔄</div>
       <h3 class="t" data-he="לולאת תסכול" data-en="The frustration loop"></h3>
-      <p class="t" data-he="תקיעה ← תסכול ← ויתור. שוב ושוב ושוב." data-en="Stuck → frustrated → give up. Over and over."></p>
+      <p class="t" data-he="תקיעה → תסכול → ויתור. שוב ושוב ושוב." data-en="Stuck → frustrated → give up. Over and over."></p>
     </div>
-    <div class="problem-card">
+    <div class="problem-card fade-up">
       <div class="icon">💔</div>
       <h3 class="t" data-he='"עצלן" ו"לא ממומש"' data-en='"Lazy" and "unrealized"'></h3>
-      <p class="t"
-         data-he="תווית שנדבקת — במקום לזהות שהמוח פשוט צריך מערכת הפעלה קצת אחרת."
-         data-en="A label that sticks — instead of recognizing the brain just needs a different operating system."></p>
+      <p class="t" data-he="תווית שנדבקת — במקום לזהות שהמוח פשוט צריך מערכת הפעלה אחרת." data-en="A label that sticks — instead of recognizing the brain needs a different operating system."></p>
     </div>
-    <div class="problem-card">
+    <div class="problem-card fade-up">
       <div class="icon">🙋</div>
       <h3 class="t" data-he="תלות מתמדת במבוגר" data-en="Constant adult dependence"></h3>
-      <p class="t"
-         data-he="כל תקיעה קטנה מצריכה הורה או מורה שיוציאו אותם."
-         data-en="Every small stuck moment needs a parent or teacher to pull them out."></p>
-    </div>
-  </div>
-</section>
-
-<!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
-<section class="how">
-  <div class="section-header center">
-    <div class="section-label t" data-he="איך זה עובד" data-en="How It Works"></div>
-    <h2 class="t" data-he="ארבעה צעדים. שניות." data-en="Four steps. Seconds."></h2>
-    <p class="section-sub t"
-       data-he="מזיהוי אוטומטי ועד לפעולה קטנה — המערכת פועלת בשקט, בלי להפריע לאף אחד."
-       data-en="From automatic detection to a micro-action — the system works quietly without disturbing anyone."></p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-icon" aria-hidden="true">📡</div>
-      <div class="step-num" aria-label="Step 1">1</div>
-      <h3 class="t" data-he="זיהוי" data-en="Detect"></h3>
-      <p class="t"
-         data-he="הצמיד קורא דופק, מוליכות עור ותנועה — ומזהה דפוס תקיעה לפני שהתסכול משתלט."
-         data-en="The wristband reads heart rate, skin conductance and movement — detecting stuckness before frustration takes over."></p>
-    </div>
-    <div class="step">
-      <div class="step-icon" aria-hidden="true">⚡</div>
-      <div class="step-num" aria-label="Step 2">2</div>
-      <h3 class="t" data-he="התערבות" data-en="Interrupt"></h3>
-      <p class="t"
-         data-he="רטט עדין בפרק כף היד. לא מבייש, לא מפריע לאחרים, לא דורש מילה."
-         data-en="A gentle wrist vibration. Discreet, private, requires no words."></p>
-    </div>
-    <div class="step">
-      <div class="step-icon" aria-hidden="true">🎯</div>
-      <div class="step-num" aria-label="Step 3">3</div>
-      <h3 class="t" data-he="מיקרו-פעולה" data-en="Micro-action"></h3>
-      <p class="t"
-         data-he='הנחיה אחת פשוטה מותאמת לסוג התקיעה: "הזז אצבע אחת" או "שאיפה אחת, לאט".'
-         data-en='One cue matched to the stuckness type: "move one finger" or "one slow breath."'></p>
-    </div>
-    <div class="step">
-      <div class="step-icon" aria-hidden="true">🌊</div>
-      <div class="step-num" aria-label="Step 4">4</div>
-      <h3 class="t" data-he="חזרה לזרימה" data-en="Back to flow"></h3>
-      <p class="t"
-         data-he="הילד ממשיך בעצמו. בלי הורה. בלי מורה. בלי שמישהו ידע."
-         data-en="The child continues on their own. No parent, no teacher, no one needs to know."></p>
+      <p class="t" data-he="כל תקיעה קטנה מצריכה הורה או מורה שיוציאו אותם." data-en="Every small stuck moment needs a parent or teacher to pull them out."></p>
     </div>
   </div>
 </section>
 
 <!-- ── FOUNDERS ─────────────────────────────────────────────── -->
 <section class="founders">
-  <div class="section-header center">
+  <div class="founders-header fade-up">
     <div class="section-label t" data-he="המייסדות" data-en="The Founders"></div>
     <h2 class="t" data-he="נבנה מתוך ניסיון אישי" data-en="Built from personal experience"></h2>
   </div>
   <div class="founders-grid">
-    <div class="founder-card">
+    <div class="founder-card fade-up">
       <p class="founder-quote t"
-         data-he='"כילדה, חוויתי שוב ושוב פער כואב בין היכולת שלי לבין מה שראו מבחוץ. לא קיבלתי את הכלים מבחוץ — בניתי אותם לבד. המטרה שלי היא שאף ילד לא יצטרך לעשות את זה לבד."'
-         data-en='"As a child, I felt a painful gap between my abilities and what others saw. I never got the tools from outside — I built them myself. My goal: no child should ever have to do that alone."'></p>
-      <div class="founder-name">Linur Serero Dar / לינור סררו דר</div>
+         data-he="כילדה, חוויתי שוב ושוב פער כואב בין היכולת שלי לבין מה שראו מבחוץ. לא קיבלתי את הכלים מבחוץ — בניתי אותם לבד. המטרה שלי היא שאף ילד לא יצטרך לעשות את זה לבד."
+         data-en="As a child, I felt a painful gap between my abilities and what others saw. I never got the tools from outside — I built them myself. My goal: no child should ever have to do that alone."></p>
+      <div class="founder-name">לינור סררו דר / Linur Serero Dar</div>
       <div class="founder-title t" data-he="מייסדת ומנכ&quot;לית" data-en="Co-founder &amp; CEO"></div>
     </div>
-    <div class="founder-card">
+    <div class="founder-card fade-up">
       <p class="founder-quote t"
-         data-he='"אני מאמינה שכל ילד עם ADHD נושא בתוכו עולם שלם — הוא פשוט צריך את הכלי הנכון כדי לגשת אליו. OneStep הוא הכלי הזה."'
-         data-en='"I believe every child with ADHD carries a whole world inside — they just need the right tool to access it. OneStep is that tool."'></p>
-      <div class="founder-name">Lilyan Pinchas / ליליאן פנחס</div>
+         data-he="אני מאמינה שכל ילד עם ADHD נושא בתוכו עולם שלם — הוא פשוט צריך את הכלי הנכון כדי לגשת אליו. OneStep הוא הכלי הזה."
+         data-en="I believe every child with ADHD carries a whole world inside — they just need the right tool to access it. OneStep is that tool."></p>
+      <div class="founder-name">ליליאן פנחס / Lilyan Pinchas</div>
       <div class="founder-title t" data-he="מייסדת שותפה" data-en="Co-founder"></div>
     </div>
   </div>
@@ -203,49 +212,50 @@
 
 <!-- ── CTA ──────────────────────────────────────────────────── -->
 <section class="cta">
-  <div class="cta-bg" aria-hidden="true"></div>
-
-  <div class="section-header center" style="margin-bottom: 36px;">
+  <div class="cta-inner fade-up">
+    <div class="section-label t" data-he="הצטרפו אלינו" data-en="Join Us"></div>
     <h2 class="t"
         data-he="אנחנו לא מבקשים מהילד להתאמץ יותר."
         data-en="We don't ask your child to try harder."></h2>
     <p class="section-sub t"
-       data-he="אנחנו נותנים לו מערכת שעובדת גם כשהוא לא מצליח. הצטרפו לרשימת ההמתנה."
-       data-en="We give them a system that works even when they can't. Join the waitlist."></p>
+       data-he="אנחנו נותנים לו מערכת שעובדת גם כשהוא לא מצליח."
+       data-en="We give them a system that works even when they can't."></p>
+
+    <form class="waitlist-form" onsubmit="submitForm(event,'cta-success','email-cta')">
+      <input type="email" id="email-cta" required class="t"
+             data-he-placeholder="האימייל שלך"
+             data-en-placeholder="Your email address"
+             placeholder="האימייל שלך" />
+      <button type="submit" class="btn-primary t"
+              data-he="אני רוצה גישה ראשונה"
+              data-en="I want first access"></button>
+    </form>
+    <div class="success-msg t" id="cta-success"
+         data-he="נרשמת! נחזור אליך בקרוב 🎉"
+         data-en="You're on the list! 🎉"></div>
+    <p class="form-note t"
+       data-he="ללא ספאם. רק עדכון אחד כשנשיק."
+       data-en="No spam. One email when we launch."></p>
   </div>
-
-  <form class="waitlist-form" onsubmit="submitForm(event, 'cta-success', 'email-cta')">
-    <input type="email" id="email-cta" required class="t"
-           data-he-placeholder="האימייל שלך"
-           data-en-placeholder="Your email address"
-           placeholder="האימייל שלך" />
-    <button type="submit" class="btn-primary t"
-            data-he="אני רוצה גישה ראשונה"
-            data-en="I want first access"></button>
-  </form>
-
-  <div class="success-msg t" id="cta-success" style="margin: 0 auto;"
-       data-he="נרשמת! נחזור אליך בקרוב 🎉"
-       data-en="You're on the list! 🎉"></div>
-
-  <p class="form-note t"
-     data-he="ללא ספאם. רק עדכון אחד כשנשיק."
-     data-en="No spam. One email when we launch."></p>
 </section>
 
 <!-- ── FOOTER ───────────────────────────────────────────────── -->
 <footer>
   <img src="logo.png" alt="OneStep ADHD" class="footer-logo" />
-  <div class="footer-divider" aria-hidden="true"></div>
-  <p>
-    &copy; 2026 OneStep ADHD &nbsp;&middot;&nbsp;
+  <div class="footer-right">
+    <span>&copy; 2026 OneStep ADHD</span>
     <a href="mailto:hello@onestepadhd.com">hello@onestepadhd.com</a>
-  </p>
-  <p style="margin-top: 10px; font-size: 0.82rem;">
-    Linur Serero Dar &amp; Lilyan Pinchas
-  </p>
+    <span>Linur Serero Dar &amp; Lilyan Pinchas</span>
+  </div>
 </footer>
 
 <script src="main.js"></script>
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
