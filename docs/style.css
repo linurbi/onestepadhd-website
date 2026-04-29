@@ -169,8 +169,9 @@ nav {
 /* ── 5. HERO ────────────────────────────────────────────────── */
 
 .hero {
-  min-height: 100vh;
+  min-height: auto;
   padding-top: 72px;
+  padding-bottom: 44px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: var(--white);
@@ -182,7 +183,7 @@ nav {
   justify-content: center;
   align-items: flex-start;
   gap: 24px;
-  padding: 48px 5% 48px 7%;
+  padding: 48px 5% 64px 7%;
   min-width: 0;
 }
 
@@ -267,7 +268,6 @@ nav {
 .trust-bar {
   background: var(--dark);
   padding: 28px 6%;
-  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
