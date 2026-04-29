@@ -170,10 +170,11 @@ nav {
 
 .hero {
   min-height: auto;
-  padding-top: 72px;
+  padding-top: 82px;
   padding-bottom: 44px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: stretch;
   background: var(--white);
 }
 
@@ -183,7 +184,7 @@ nav {
   justify-content: center;
   align-items: flex-start;
   gap: 24px;
-  padding: 48px 5% 64px 7%;
+  padding: 56px 5% 88px 7%;
   min-width: 0;
 }
 
@@ -218,7 +219,7 @@ nav {
 .hero-image {
   position: relative;
   overflow: hidden;
-  min-height: 500px;
+  min-height: 560px;
   background: #f3f4f6;
 }
 
@@ -227,8 +228,8 @@ nav {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center center;
+  object-fit: cover;
+  object-position: center 22%;
 }
 
 .hero-image::after {
@@ -240,7 +241,7 @@ nav {
   display: flex;
   gap: 36px;
   padding-top: 16px;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
   border-top: 1px solid var(--border);
   width: 100%;
 }
@@ -273,6 +274,12 @@ nav {
   justify-content: center;
   gap: 48px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+}
+
+.hero + .trust-bar {
+  margin-top: 0;
 }
 
 .trust-item {
