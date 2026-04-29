@@ -10,7 +10,8 @@ build/
 stuckness_score/
 validation/
 results/
-docs/
+docs/ADHD.pptx
+docs/מניפסט.docx
 demo.py
 requirements.txt
 README.md
