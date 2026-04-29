@@ -1,8 +1,20 @@
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
-.env
 *.egg-info/
 dist/
 build/
+
+# Algorithm code — kept in private repo (onestepadhd)
+stuckness_score/
+validation/
+results/
+docs/
+demo.py
+requirements.txt
+README.md
+
+# OS
+.env
 .DS_Store
